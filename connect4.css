@@ -1,9 +1,11 @@
 /* game board table */
 
+
 #board td {
   width: 50px;
   height: 50px;
   border: solid 1px #666;
+  display: relative;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
@@ -31,4 +33,19 @@
 
 #column-top td:hover {
   background-color: gold;
+}
+
+#button {
+  position: relative;
+  margin-left: 120px;
+  width: 100px;
+  height: 50px;
+  font-size: 20px; 
+  background-color: #e5ba39;
+  border: 8px solid gold;
+  color: #f4f4f4;
+  font-weight: bold;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+
 }

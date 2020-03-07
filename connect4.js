@@ -14,15 +14,35 @@ class Game {
     this.board = [];
     this.currPlayer = 1;
     this.htmlBoard;
-    //this.handleClick();
+    this.startButton;
+    
     this.makeBoard();
-    this.makeHtmlBoard();
+    this.makeHtmlBoard(); 
+    this.clickStart();
+    this.checkifPlaying = false;
 
   }
 
 
-/** makeBoard: create in-JS board structure:
- *   board = array of rows, each row is array of cells  (board[y][x]) */
+  clickStart (){
+
+    this.startButton = document.getElementById('button');
+      this.startButton.addEventListener('click',this.gameReset.bind(this));
+    
+  }
+
+  // Resets the board and starts the game
+  gameReset() {
+    this.checkIfPlaying = true;
+    console.log("this in gameReset" + this);
+
+    // this.makeBoard();
+    // this.makeHtmlBoard();
+
+    //Remove any counters 
+  }
+
+
 
   makeBoard() {
     for (let y = 0; y < this.HEIGHT; y++) {
@@ -61,6 +81,10 @@ class Game {
   
       this.htmlBoard.append(row);
     }
+
+    // board.style.display = 'none';
+    
+
   }
 
 /** findSpotForCol: given column x, return top empty y (null if filled) */
@@ -98,6 +122,8 @@ class Game {
 /** handleClick: handle click of column top to play piece */
 
 handleClick(evt) {
+console.log("checkIfPlaying in handleClick" + this.checkIfPlaying);
+  if (this.checkifPlaying) {
   // get x from ID of clicked cell
   const x = +evt.target.id;
 
@@ -124,6 +150,8 @@ handleClick(evt) {
   // switch players
   console.log("this is: " + this);
   this.currPlayer = this.currPlayer === 1 ? 2 : 1;
+
+}
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */
@@ -166,7 +194,12 @@ console.log("this outside of every "+this);
 
 }
 
+
+
 let connect4Game = new Game (6, 7);
+
+
+
 
 // connect4Game.makeBoard();
 // connect4Game.makeHtmlBoard();
